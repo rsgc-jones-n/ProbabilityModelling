@@ -90,4 +90,14 @@ while deck.count > 50 {
 // Print the face up cards to the user
 print("Your Cards Are\(Suit.glyph(forHashValue: playerHand[0].suit))\(playerHand[0].value) and \(Suit.glyph(forHashValue: playerHand[1].suit))\(playerHand[1].value)")
 
+print("Your cards total to \(playerHand[0].value + playerHand[1].value)")
+
+if
+    
+    
+    
+    
+    print("")
+print("")
+
 
