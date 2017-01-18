@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-// Create an enumeration for the suits of a deck of cards
+// Creating suits for the deck of cards
 enum Suit : String {
     
     case hearts     = "❤️"
@@ -35,16 +35,6 @@ enum Suit : String {
     
 }
 
-// Play with the enumeration a bit to see what it gives us
-Suit.hearts.hashValue
-Suit.hearts.rawValue
-Suit.diamonds.hashValue
-Suit.diamonds.rawValue
-Suit.spades.hashValue
-Suit.spades.rawValue
-Suit.clubs.hashValue
-Suit.clubs.rawValue
-
 // Create a new datatype to represent a playing card
 struct Card {
     
@@ -68,12 +58,36 @@ for suit in 0...3 {
     }
 }
 
+/*
 // Iterate over the deck of cards
 for card in deck {
     print("Suit is \(Suit.glyph(forHashValue: card.suit)) and value is \(card.value)")
 }
+*/
+
+print("Welcome to Command Line Blackjack!")
+print("")
 
 var playerHand : [Card] = []
 var computerHand : [Card] = []
+
+// "Shuffle" the deck and give half the cards to the player
+while deck.count > 50 {
+    
+    // Generate a random number between 0 and the count of cards still left in the deck
+    var position = Int(arc4random_uniform(UInt32(deck.count)))
+    
+    // Copy the card in this position to the player's hand
+    playerHand.append(deck[position])
+    
+    // Remove the card from the deck for this position
+    deck.remove(at: position)
+    
+    //print("There are \(deck.count) cards left in the deck")
+    
+}
+
+// Print the face up cards to the user
+print("Your Cards Are\(Suit.glyph(forHashValue: playerHand[0].suit))\(playerHand[0].value) and \(Suit.glyph(forHashValue: playerHand[1].suit))\(playerHand[1].value)")
 
 
