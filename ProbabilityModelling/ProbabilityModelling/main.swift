@@ -10,6 +10,7 @@ import Foundation
 import Cocoa
 
 var playerHandCount = 0
+var dealerHandCount = 0
 
 // Creating suits for the deck of cards
 enum Suit : String {
@@ -65,10 +66,11 @@ for suit in 0...3 {
 print("Welcome to Command Line Blackjack!")
 print("")
 
+// Declare the two hands
 var playerHand : [Card] = []
 var dealerHand : [Card] = []
 
-// "Shuffle" the deck and give half the cards to the player
+// "Shuffle" the deck and give two cards to the player, two cards to the dealer
 while deck.count > 50 {
     
     // Generate a random number between 0 and the count of cards still left in the deck
@@ -81,7 +83,6 @@ while deck.count > 50 {
     deck.remove(at: position)
     
     print("There are \(deck.count) cards left in the deck")
-    
 }
 
 print("")
@@ -98,21 +99,13 @@ while deck.count > 48 && deck.count < 51 {
     deck.remove(at: position)
     
     print("There are \(deck.count) cards left in the deck")
-    
 }
 
-
-
-
-
-
-// Print the face up cards to the user
+// Print the player their cards
 print("Your cards are\(Suit.glyph(forHashValue: playerHand[0].suit))\(playerHand[0].value) and \(Suit.glyph(forHashValue: playerHand[1].suit))\(playerHand[1].value)")
 
-// Toal the cards
-// Iterate over the deck of cards
+// Toal the players cards by itterating over them
 for (index, card) in playerHand.enumerated() {
-    
     
 // If the card is a J, Q or K  only add 10 to count
     if card.value > 10 {
@@ -126,11 +119,22 @@ for (index, card) in playerHand.enumerated() {
 
 print("Your cards total to \(playerHandCount)")
 print("")
-
 print("The dealers showing card is\(Suit.glyph(forHashValue: dealerHand[0].suit))\(dealerHand[0].value)")
 
+// Total the dealers cards by itterating over them
+for (index, card) in dealerHand.enumerated() {
+    
+    // If the card is a J, Q or K  only add 10 to count
+    if card.value > 10 {
+        
+        dealerHandCount += 10
+        
+    } else {
+        dealerHandCount += card.value
+    }
+}
 
-
+//print(dealerHandCount)
 print("")
 print("")
 
