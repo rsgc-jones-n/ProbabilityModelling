@@ -61,6 +61,7 @@ for suit in 0...3 {
     }
 }
 
+// Display the welcome message
 print("Welcome to Command Line Blackjack!")
 print("")
 
@@ -79,9 +80,31 @@ while deck.count > 50 {
     // Remove the card from the deck for this position
     deck.remove(at: position)
     
-    //print("There are \(deck.count) cards left in the deck")
+    print("There are \(deck.count) cards left in the deck")
     
 }
+
+print("")
+
+while deck.count > 48 && deck.count < 51 {
+    
+    // Generate a random number between 0 and the count of cards still left in the deck
+    var position = Int(arc4random_uniform(UInt32(deck.count)))
+    
+    // Copy the card in this position to the player's hand
+    dealerHand.append(deck[position])
+    
+    // Remove the card from the deck for this position
+    deck.remove(at: position)
+    
+    print("There are \(deck.count) cards left in the deck")
+    
+}
+
+
+
+
+
 
 // Print the face up cards to the user
 print("Your cards are\(Suit.glyph(forHashValue: playerHand[0].suit))\(playerHand[0].value) and \(Suit.glyph(forHashValue: playerHand[1].suit))\(playerHand[1].value)")
@@ -90,21 +113,24 @@ print("Your cards are\(Suit.glyph(forHashValue: playerHand[0].suit))\(playerHand
 // Iterate over the deck of cards
 for (index, card) in playerHand.enumerated() {
     
+    
+// If the card is a J, Q or K  only add 10 to count
     if card.value > 10 {
     
-        playerHandCount += 1
+        playerHandCount += 10
         
+    } else {
+        playerHandCount += card.value
     }
 }
 
 print("Your cards total to \(playerHandCount)")
 print("")
 
-//print("The dealers showing card is\(Suit.glyph(forHashValue: dealerHand[0].suit))\(dealerHand[0].value)")
-    
+print("The dealers showing card is\(Suit.glyph(forHashValue: dealerHand[0].suit))\(dealerHand[0].value)")
 
-    
-    
+
+
 print("")
 print("")
 
