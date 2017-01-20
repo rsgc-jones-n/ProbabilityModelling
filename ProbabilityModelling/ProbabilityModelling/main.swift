@@ -132,11 +132,37 @@ for (index, card) in dealerHand.enumerated() {
     }
 }
 
+// When the player or dealer has more than 21 cards
+//func 21andOver() {
+
+//}
+
 func gun21() {
     
     print("Blackjack to the dealer!")
     
-    //reset()
+}
+
+// Add a card to the players hand
+func hit(){
+    
+    //print("Player Hit")
+    
+    var position = Int(arc4random_uniform(UInt32(deck.count)))
+    
+    // Copy the card in this position to the player's hand
+    playerHand.append(deck[position])
+    
+    // Remove the card from the deck for this position
+    deck.remove(at: position)
+    
+    print("\nThere are \(deck.count) cards left in the deck")
+    
+}
+
+func stand(){
+    
+    //print("Player Stands")
     
 }
 
@@ -150,6 +176,9 @@ if dealerHandCount == 21 {
 var response : Bool = false
 var responseString = "X"
 
+func question() {
+
+// Repeat until a proper response is given
 repeat {
     
     print("\nWould you like to hit or stand?\n")
@@ -157,16 +186,20 @@ repeat {
     if let input = readLine(strippingNewline: true) {
         responseString = input
         
+        // If the player hits
         if responseString == "hit" || responseString == "Hit" {
             
-            //hit()
+            hit()
             
-            print("Player Hit")
+            //print("Player Hit")
             response = true
             
+        // Id the player stands
         } else if responseString == "stand" || responseString == "Stand" {
             
-            //stand()
+            stand()
+            
+            //print("Plater Stands")
             response = false
             
         } else {
@@ -175,6 +208,9 @@ repeat {
     }
 } while responseString == "X"
 
+}
+
+question()
 
 
 //print(dealerHandCount)
