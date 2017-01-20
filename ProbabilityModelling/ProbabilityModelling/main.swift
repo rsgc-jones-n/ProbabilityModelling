@@ -63,8 +63,7 @@ for suit in 0...3 {
 }
 
 // Display the welcome message
-print("Welcome to Command Line Blackjack!")
-print("")
+print("Welcome to Command Line Blackjack!\n")
 
 // Declare the two hands
 var playerHand : [Card] = []
@@ -82,10 +81,8 @@ while deck.count > 50 {
     // Remove the card from the deck for this position
     deck.remove(at: position)
     
-    print("There are \(deck.count) cards left in the deck")
+    //print("There are \(deck.count) cards left in the deck")
 }
-
-print("")
 
 while deck.count > 48 && deck.count < 51 {
     
@@ -98,7 +95,7 @@ while deck.count > 48 && deck.count < 51 {
     // Remove the card from the deck for this position
     deck.remove(at: position)
     
-    print("There are \(deck.count) cards left in the deck")
+    //print("There are \(deck.count) cards left in the deck")
 }
 
 // Print the player their cards
@@ -117,9 +114,10 @@ for (index, card) in playerHand.enumerated() {
     }
 }
 
-print("Your cards total to \(playerHandCount)")
-print("")
+print("Your cards total to \(playerHandCount)\n")
 print("The dealers showing card is\(Suit.glyph(forHashValue: dealerHand[0].suit))\(dealerHand[0].value)")
+
+
 
 // Total the dealers cards by itterating over them
 for (index, card) in dealerHand.enumerated() {
@@ -134,7 +132,54 @@ for (index, card) in dealerHand.enumerated() {
     }
 }
 
+func gun21() {
+    
+    print("Blackjack to the dealer!")
+    
+    //reset()
+    
+}
+
+
+if dealerHandCount == 21 {
+    gun21()
+}
+
+// Ask the player if they would like to hit, stand, double or split
+
+var response : Bool = false
+var responseString = "X"
+
+repeat {
+    
+    print("\nWould you like to hit or stand?\n")
+    
+    if let input = readLine(strippingNewline: true) {
+        responseString = input
+        
+        if responseString == "hit" || responseString == "Hit" {
+            
+            //hit()
+            
+            print("Player Hit")
+            response = true
+            
+        } else if responseString == "stand" || responseString == "Stand" {
+            
+            //stand()
+            response = false
+            
+        } else {
+            responseString = "X"
+        }
+    }
+} while responseString == "X"
+
+
+
 //print(dealerHandCount)
+
+
 print("")
 print("")
 
