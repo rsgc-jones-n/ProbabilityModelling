@@ -99,9 +99,11 @@ while deck.count > 48 && deck.count < 51 {
 }
 
 // Print the player their cards
-print("Your cards are\(Suit.glyph(forHashValue: playerHand[0].suit))\(playerHand[0].value) and \(Suit.glyph(forHashValue: playerHand[1].suit))\(playerHand[1].value)")
+print("Your cards are \(Suit.glyph(forHashValue: playerHand[0].suit))\(playerHand[0].value) and \(Suit.glyph(forHashValue: playerHand[1].suit))\(playerHand[1].value)")
 
 // Toal the players cards by itterating over them
+
+func playerTotal(){
 for (index, card) in playerHand.enumerated() {
     
 // If the card is a J, Q or K  only add 10 to count
@@ -113,9 +115,10 @@ for (index, card) in playerHand.enumerated() {
         playerHandCount += card.value
     }
 }
+}
 
 print("Your cards total to \(playerHandCount)\n")
-print("The dealers showing card is\(Suit.glyph(forHashValue: dealerHand[0].suit))\(dealerHand[0].value)")
+print("The dealers showing card is \(Suit.glyph(forHashValue: dealerHand[0].suit))\(dealerHand[0].value)")
 
 
 
@@ -156,8 +159,11 @@ func hit(){
     // Remove the card from the deck for this position
     deck.remove(at: position)
     
-    print("\nThere are \(deck.count) cards left in the deck")
+    //print("\nThere are \(deck.count) cards left in the deck")
     
+    print("\nYou recieved a \(Suit.glyph(forHashValue: playerHand[playerHand.count - 1].suit))\(playerHand[playerHand.count - 1].value)\n")
+    
+    playerTotal()
 }
 
 func stand(){
