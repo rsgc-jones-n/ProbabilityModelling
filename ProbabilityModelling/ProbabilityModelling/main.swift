@@ -69,6 +69,8 @@ print("Welcome to Command Line Blackjack!\n")
 var playerHand : [Card] = []
 var dealerHand : [Card] = []
 
+func startGame() {
+
 // "Shuffle" the deck and give two cards to the player, two cards to the dealer
 while deck.count > 50 {
     
@@ -99,11 +101,18 @@ while deck.count > 48 && deck.count < 51 {
 }
 
 // Print the player their cards
-print("Your cards are \(Suit.glyph(forHashValue: playerHand[0].suit))\(playerHand[0].value) and \(Suit.glyph(forHashValue: playerHand[1].suit))\(playerHand[1].value)")
+print("Your cards are \(Suit.glyph(forHashValue: playerHand[0].suit))\(playerHand[0].value) and \(Suit.glyph(forHashValue: playerHand[1].suit))\(playerHand[1].value)\n")
+    
+}
+
+startGame()
 
 // Toal the players cards by itterating over them
-
 func playerTotal(){
+    
+// Reset the count
+playerHandCount = 0
+    
 for (index, card) in playerHand.enumerated() {
     
 // If the card is a J, Q or K  only add 10 to count
@@ -117,8 +126,10 @@ for (index, card) in playerHand.enumerated() {
 }
 }
 
+playerTotal()
+
 print("Your cards total to \(playerHandCount)\n")
-print("The dealers showing card is \(Suit.glyph(forHashValue: dealerHand[0].suit))\(dealerHand[0].value)")
+print("The dealers showing card is \(Suit.glyph(forHashValue: dealerHand[0].suit))\(dealerHand[0].value)\n")
 
 
 
@@ -135,14 +146,70 @@ for (index, card) in dealerHand.enumerated() {
     }
 }
 
-// When the player or dealer has more than 21 cards
+//When the player or dealer has more than 21 cards
 //func 21andOver() {
 
 //}
 
+
+// Ask the player if they would like to hit, stand, double or split
+var response : Bool = false
+var responseString = "X"
+func question() {
+    
+    // Repeat until a proper response is given
+    repeat {
+        
+        print("Would you like to hit or stand?\n")
+        
+        if let input = readLine(strippingNewline: true) {
+            responseString = input
+            
+            print("")
+            
+            // If the player hits
+            if responseString == "hit" || responseString == "Hit" {
+                
+                hit()
+                
+                //print("Player Hit")
+                response = true
+                
+                // Id the player stands
+            } else if responseString == "stand" || responseString == "Stand" {
+                
+                stand()
+                
+                //print("Plater Stands")
+                response = false
+                
+            } else {
+                responseString = "X"
+            }
+        }
+    } while responseString == "X"
+    
+}
+
+func checkForBust(){
+    if playerHandCount > 21 {
+        print("Bust!\n")
+    }
+    
+    if playerHandCount < 21 {
+        question()
+    }
+}
+
+func checkForBlackjack(){
+    if playerHandCount == 21 {
+        print("BLACKJACK!\n")
+    }
+}
+
 func gun21() {
     
-    print("Blackjack to the dealer!")
+    print("Blackjack to the dealer!\n")
     
 }
 
@@ -161,9 +228,14 @@ func hit(){
     
     //print("\nThere are \(deck.count) cards left in the deck")
     
-    print("\nYou recieved a \(Suit.glyph(forHashValue: playerHand[playerHand.count - 1].suit))\(playerHand[playerHand.count - 1].value)\n")
+    print("You recieved a \(Suit.glyph(forHashValue: playerHand[playerHand.count - 1].suit))\(playerHand[playerHand.count - 1].value)\n")
     
     playerTotal()
+    
+    print("Your cards total to \(playerHandCount)\n")
+    
+    checkForBust()
+    checkForBlackjack()
 }
 
 func stand(){
@@ -172,57 +244,13 @@ func stand(){
     
 }
 
-
 if dealerHandCount == 21 {
     gun21()
 }
 
-// Ask the player if they would like to hit, stand, double or split
-
-var response : Bool = false
-var responseString = "X"
-
-func question() {
-
-// Repeat until a proper response is given
-repeat {
-    
-    print("\nWould you like to hit or stand?\n")
-    
-    if let input = readLine(strippingNewline: true) {
-        responseString = input
-        
-        // If the player hits
-        if responseString == "hit" || responseString == "Hit" {
-            
-            hit()
-            
-            //print("Player Hit")
-            response = true
-            
-        // Id the player stands
-        } else if responseString == "stand" || responseString == "Stand" {
-            
-            stand()
-            
-            //print("Plater Stands")
-            response = false
-            
-        } else {
-            responseString = "X"
-        }
-    }
-} while responseString == "X"
-
-}
-
 question()
-
 
 //print(dealerHandCount)
 
-
-print("")
-print("")
 
 
