@@ -13,16 +13,6 @@ var Game: PlayGame = PlayGame()
 var Response: UserResponse = UserResponse()
 var Deck: cardDeck = cardDeck()
 
-// Initalize a deck of cards
-var deck : [Card] = []
-for suit in 0...3 {
-    for value in 2...14 {
-        
-        var card = Card(value: value, suit: suit)
-        deck.append(card)
-        
-    }
-}
 
 // Display the welcome message
 print("Welcome to Command Line Blackjack!\n")
