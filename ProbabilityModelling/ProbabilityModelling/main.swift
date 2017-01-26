@@ -27,9 +27,14 @@ for suit in 0...3 {
 var playerHand : [Card] = []
 var dealerHand : [Card] = []
 
-
-Game.startGame()
+func play(){
 Game.playerTotal()
 Game.statePlayerTotal()
 Game.stateDealersFace()
 Response.question()
+Game.checkWinner()
+}
+
+Game.startGame()
+play()
+Response.playAgain()

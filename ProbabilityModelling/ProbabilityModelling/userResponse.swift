@@ -50,4 +50,38 @@ func question() {
     
 }
 
+    func playAgain() {
+        
+        // Repeat until a proper response is given
+        repeat {
+            
+            print("Would you like to play\n")
+            
+            if let input = readLine(strippingNewline: true) {
+                responseString = input
+                
+                print("")
+                
+                // If the player says yes
+                if responseString == "yes" || responseString == "Yes" {
+                    
+                    print("User wants to play again")
+
+                    response = true
+                    
+                    // If the player says no
+                } else if responseString == "no" || responseString == "No" {
+                    
+                    Game.endGame()
+                    
+                    response = false
+                    
+                } else {
+                    responseString = "X"
+                }
+            }
+        } while responseString == "X"
+        
+    }
+
 }

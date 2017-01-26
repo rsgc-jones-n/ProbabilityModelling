@@ -199,4 +199,12 @@ class PlayGame {
         flipDealerCard()
         
     }
+    
+    func checkWinner(){
+        print("Checking for a winner")
+    }
+    
+    func endGame(){
+        print("Thanks for playing!")
+    }
 }
