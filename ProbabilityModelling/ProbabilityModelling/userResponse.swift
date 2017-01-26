@@ -55,7 +55,7 @@ func question() {
         // Repeat until a proper response is given
         repeat {
             
-            print("Would you like to play\n")
+            print("Would you like to play again?\n")
             
             if let input = readLine(strippingNewline: true) {
                 responseString = input
@@ -64,9 +64,8 @@ func question() {
                 
                 // If the player says yes
                 if responseString == "yes" || responseString == "Yes" {
-                    
-                    print("User wants to play again")
 
+                    play()
                     response = true
                     
                     // If the player says no

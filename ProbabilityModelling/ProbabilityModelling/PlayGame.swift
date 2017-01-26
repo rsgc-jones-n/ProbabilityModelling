@@ -9,6 +9,8 @@
 import Foundation
 class PlayGame {
     
+    var Deck: cardDeck = cardDeck()
+    
     var playerHandCount = 0
     var dealerHandCount = 0
     
@@ -25,7 +27,7 @@ class PlayGame {
             var position = Int(arc4random_uniform(UInt32(deck.count)))
             
             // Copy the card in this position to the player's hand
-            playerHand.append(deck[position])
+            Deck.playerHand.append(deck[position])
             
             // Remove the card from the deck for this position
             deck.remove(at: position)
@@ -39,7 +41,7 @@ class PlayGame {
             var position = Int(arc4random_uniform(UInt32(deck.count)))
             
             // Copy the card in this position to the player's hand
-            dealerHand.append(deck[position])
+            Deck.dealerHand.append(deck[position])
             
             // Remove the card from the deck for this position
             deck.remove(at: position)
@@ -47,11 +49,8 @@ class PlayGame {
             //print("There are \(deck.count) cards left in the deck")
         }
         
-        // Display the welcome message
-        print("Welcome to Command Line Blackjack!\n")
-        
         // Print the player their cards
-        print("Your cards are \(Suit.glyph(forHashValue: playerHand[0].suit))\(playerHand[0].value) and \(Suit.glyph(forHashValue: playerHand[1].suit))\(playerHand[1].value)\n")
+        print("Your cards are \(Suit.glyph(forHashValue: Deck.playerHand[0].suit))\(Deck.playerHand[0].value) and \(Suit.glyph(forHashValue: Deck.playerHand[1].suit))\(Deck.playerHand[1].value)\n")
         
     }
     
@@ -76,7 +75,7 @@ class PlayGame {
     func dealerTotal(){
         dealerHandCount = 0
         
-        for (index, card) in dealerHand.enumerated() {
+        for (index, card) in Deck.dealerHand.enumerated() {
             
             // If the card is a J, Q or K  only add 10 to count
             if card.value > 10 {
@@ -105,7 +104,7 @@ class PlayGame {
         // Reset the count
         playerHandCount = 0
         
-        for (index, card) in playerHand.enumerated() {
+        for (index, card) in Deck.playerHand.enumerated() {
             
             // If the card is a J, Q or K  only add 10 to count
             if card.value > 10 {
@@ -124,7 +123,7 @@ class PlayGame {
     
     func stateTotals(){
         print("Your cards total to \(playerHandCount)\n")
-        print("The dealers showing card is \(Suit.glyph(forHashValue: dealerHand[0].suit))\(dealerHand[0].value)\n")
+        print("The dealers showing card is \(Suit.glyph(forHashValue: Deck.dealerHand[0].suit))\(Deck.dealerHand[0].value)\n")
     }
     
     func dealToDealer(){
@@ -133,26 +132,26 @@ class PlayGame {
         var position = Int(arc4random_uniform(UInt32(deck.count)))
         
         // Copy the card in this position to the player's hand
-        dealerHand.append(deck[position])
+        Deck.dealerHand.append(deck[position])
         
         // Remove the card from the deck for this position
         deck.remove(at: position)
         
         //print("There are \(deck.count) cards left in the deck")
         
-        print("The dealer fliped a \(Suit.glyph(forHashValue: dealerHand[dealerHand.count - 1].suit))\(dealerHand[dealerHand.count - 1].value)\n")
+        print("The dealer fliped a \(Suit.glyph(forHashValue: Deck.dealerHand[Deck.dealerHand.count - 1].suit))\(Deck.dealerHand[Deck.dealerHand.count - 1].value)\n")
         
         Game.dealerTotal()
         
     }
     
     func stateDealersFace(){
-        print("The dealers showing card is \(Suit.glyph(forHashValue: dealerHand[0].suit))\(dealerHand[0].value)\n")
+        print("The dealers showing card is \(Suit.glyph(forHashValue: Deck.dealerHand[0].suit))\(Deck.dealerHand[0].value)\n")
     }
     
     func flipDealerCard(){
         
-        print("The dealer fliped a \(Suit.glyph(forHashValue: dealerHand[1].suit))\(dealerHand[1].value)\n")
+        print("The dealer fliped a \(Suit.glyph(forHashValue: Deck.dealerHand[1].suit))\(Deck.dealerHand[1].value)\n")
         dealerTotal()
         
     }
@@ -175,14 +174,14 @@ class PlayGame {
         var position = Int(arc4random_uniform(UInt32(deck.count)))
         
         // Copy the card in this position to the player's hand
-        playerHand.append(deck[position])
+        Deck.playerHand.append(deck[position])
         
         // Remove the card from the deck for this position
         deck.remove(at: position)
         
         //print("\nThere are \(deck.count) cards left in the deck")
         
-        print("You recieved a \(Suit.glyph(forHashValue: playerHand[playerHand.count - 1].suit))\(playerHand[playerHand.count - 1].value)\n")
+        print("You recieved a \(Suit.glyph(forHashValue: Deck.playerHand[Deck.playerHand.count - 1].suit))\(Deck.playerHand[Deck.playerHand.count - 1].value)\n")
         
         playerTotal()
         
@@ -201,7 +200,18 @@ class PlayGame {
     }
     
     func checkWinner(){
-        print("Checking for a winner")
+        
+        if playerHandCount > dealerHandCount && playerHandCount < 21 {
+            print("You win!\n")
+        } else if dealerHandCount > playerHandCount && dealerHandCount < 21 {
+            print("Dealer wins\n")
+        }
+        
+        if dealerHandCount > 21 {
+            print("Bust\nYou win!")
+        }
+        
+        
     }
     
     func endGame(){

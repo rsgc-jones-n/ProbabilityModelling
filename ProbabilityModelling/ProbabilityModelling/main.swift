@@ -11,6 +11,7 @@ import Cocoa
 
 var Game: PlayGame = PlayGame()
 var Response: UserResponse = UserResponse()
+var Deck: cardDeck = cardDeck()
 
 // Initalize a deck of cards
 var deck : [Card] = []
@@ -23,18 +24,17 @@ for suit in 0...3 {
     }
 }
 
-// Declare the two hands - These are global variables
-var playerHand : [Card] = []
-var dealerHand : [Card] = []
+// Display the welcome message
+print("Welcome to Command Line Blackjack!\n")
 
 func play(){
+Game.startGame()
 Game.playerTotal()
 Game.statePlayerTotal()
 Game.stateDealersFace()
 Response.question()
 Game.checkWinner()
-}
-
-Game.startGame()
-play()
+//Deck.resetDeck()
 Response.playAgain()
+}
+play()

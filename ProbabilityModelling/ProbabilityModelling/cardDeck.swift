@@ -10,4 +10,12 @@ import Foundation
 
 class cardDeck {
     
+
+    // Declare the two hands - These are global variables
+    var playerHand : [Card] = []
+    var dealerHand : [Card] = []
+    
+    
+    
+    
 }

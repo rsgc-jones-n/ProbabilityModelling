@@ -66,10 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				F631A80F1E2D576F00112A64 /* main.swift */,
+				F6D0E4151E3A333100D62419 /* PlayGame.swift */,
 				F6D0E41B1E3A3E5A00D62419 /* userResponse.swift */,
 				F6D0E4191E3A343D00D62419 /* card.swift */,
 				F6D0E4171E3A335E00D62419 /* cardDeck.swift */,
-				F6D0E4151E3A333100D62419 /* PlayGame.swift */,
 			);
 			path = ProbabilityModelling;
 			sourceTree = "<group>";
