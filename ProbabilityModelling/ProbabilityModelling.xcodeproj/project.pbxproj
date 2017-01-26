@@ -11,6 +11,7 @@
 		F6D0E4161E3A333100D62419 /* PlayGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0E4151E3A333100D62419 /* PlayGame.swift */; };
 		F6D0E4181E3A335E00D62419 /* cardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0E4171E3A335E00D62419 /* cardDeck.swift */; };
 		F6D0E41A1E3A343D00D62419 /* card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0E4191E3A343D00D62419 /* card.swift */; };
+		F6D0E41C1E3A3E5A00D62419 /* userResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0E41B1E3A3E5A00D62419 /* userResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		F6D0E4151E3A333100D62419 /* PlayGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayGame.swift; sourceTree = "<group>"; };
 		F6D0E4171E3A335E00D62419 /* cardDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cardDeck.swift; sourceTree = "<group>"; };
 		F6D0E4191E3A343D00D62419 /* card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = card.swift; sourceTree = "<group>"; };
+		F6D0E41B1E3A3E5A00D62419 /* userResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				F631A80F1E2D576F00112A64 /* main.swift */,
+				F6D0E41B1E3A3E5A00D62419 /* userResponse.swift */,
 				F6D0E4191E3A343D00D62419 /* card.swift */,
 				F6D0E4171E3A335E00D62419 /* cardDeck.swift */,
 				F6D0E4151E3A333100D62419 /* PlayGame.swift */,
@@ -129,6 +132,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6D0E41C1E3A3E5A00D62419 /* userResponse.swift in Sources */,
 				F631A8101E2D576F00112A64 /* main.swift in Sources */,
 				F6D0E4161E3A333100D62419 /* PlayGame.swift in Sources */,
 				F6D0E4181E3A335E00D62419 /* cardDeck.swift in Sources */,
