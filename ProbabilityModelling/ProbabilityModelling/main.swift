@@ -105,7 +105,77 @@ print("Your cards are \(Suit.glyph(forHashValue: playerHand[0].suit))\(playerHan
     
 }
 
+func gun21() {
+    
+    print("Blackjack to the dealer!\n")
+    
+}
+
+func tie() {
+    print("Push")
+}
+
+func checkForBlackjack(){
+    if playerHandCount == 21 {
+        print("BLACKJACK!\n")
+    }
+    
+    if dealerHandCount == 21 {
+        print("Blackjack to the dealer")
+    }
+}
+
+func dealerTotal(){
+    dealerHandCount = 0
+    
+    for (index, card) in dealerHand.enumerated() {
+        
+        // If the card is a J, Q or K  only add 10 to count
+        if card.value > 10 {
+            
+            dealerHandCount += 10
+            
+        } else {
+            dealerHandCount += card.value
+        }
+    }
+    
+    print ("The dealers cards total to \(dealerHandCount)\n")
+    
+    if dealerHandCount < playerHandCount {
+        dealToDealer()
+    }
+    
+    if dealerHandCount == playerHandCount {
+        print("Push")
+    }
+    
+    if dealerHandCount > playerHandCount && dealerHandCount == 21 {
+        checkForBlackjack()
+    }
+}
+
+func dealToDealer(){
+    
+    // Generate a random number between 0 and the count of cards still left in the deck
+    var position = Int(arc4random_uniform(UInt32(deck.count)))
+    
+    // Copy the card in this position to the player's hand
+    dealerHand.append(deck[position])
+    
+    // Remove the card from the deck for this position
+    deck.remove(at: position)
+    
+    //print("There are \(deck.count) cards left in the deck")
+    
+    print("The dealer fliped a \(Suit.glyph(forHashValue: dealerHand[dealerHand.count - 1].suit))\(dealerHand[dealerHand.count - 1].value)\n")
+    
+    dealerTotal()
+    
+}
+
 startGame()
+
 
 // Toal the players cards by itterating over them
 func playerTotal(){
@@ -146,12 +216,6 @@ for (index, card) in dealerHand.enumerated() {
     }
 }
 
-//When the player or dealer has more than 21 cards
-//func 21andOver() {
-
-//}
-
-
 // Ask the player if they would like to hit, stand, double or split
 var response : Bool = false
 var responseString = "X"
@@ -191,6 +255,13 @@ func question() {
     
 }
 
+func flipDealerCard(){
+    
+    print("The dealer fliped a \(Suit.glyph(forHashValue: dealerHand[1].suit))\(dealerHand[1].value)\n")
+    dealerTotal()
+    
+}
+
 func checkForBust(){
     if playerHandCount > 21 {
         print("Bust!\n")
@@ -199,18 +270,6 @@ func checkForBust(){
     if playerHandCount < 21 {
         question()
     }
-}
-
-func checkForBlackjack(){
-    if playerHandCount == 21 {
-        print("BLACKJACK!\n")
-    }
-}
-
-func gun21() {
-    
-    print("Blackjack to the dealer!\n")
-    
 }
 
 // Add a card to the players hand
@@ -242,6 +301,8 @@ func stand(){
     
     //print("Player Stands")
     
+    flipDealerCard()
+    
 }
 
 if dealerHandCount == 21 {
@@ -249,8 +310,3 @@ if dealerHandCount == 21 {
 }
 
 question()
-
-//print(dealerHandCount)
-
-
-
