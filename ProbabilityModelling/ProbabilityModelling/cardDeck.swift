@@ -10,18 +10,14 @@ import Foundation
 
 class cardDeck {
     
-
-    // Declare the two hands - These are global variables
+    // Declare the two hands
     var playerHand : [Card] = []
     var dealerHand : [Card] = []
-    var deck : [Card] = []
     
-    // Initalize a deck of cards
-    for suit in 0...3 {
-    for value in 2...14 {
-    var card = Card(value: value, suit: suit)
-    deck.append(card)
+    // Reset the deck
+    func resetDeck(){
+        
+        while deck >
+        
     }
-    }
-
 }

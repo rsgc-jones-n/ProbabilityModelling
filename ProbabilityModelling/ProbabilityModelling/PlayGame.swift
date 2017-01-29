@@ -59,7 +59,7 @@ class PlayGame {
     }
     
     func tie() {
-        print("Push")
+        print("Push\n")
     }
     
     func checkForBlackjack(){
@@ -75,6 +75,7 @@ class PlayGame {
     func dealerTotal(){
         dealerHandCount = 0
         
+        // Itterate over the dealers hand
         for (index, card) in Deck.dealerHand.enumerated() {
             
             // If the card is a J, Q or K  only add 10 to count
@@ -104,6 +105,7 @@ class PlayGame {
         // Reset the count
         playerHandCount = 0
         
+        // Itterate over the players hand
         for (index, card) in Deck.playerHand.enumerated() {
             
             // If the card is a J, Q or K  only add 10 to count
@@ -150,10 +152,8 @@ class PlayGame {
     }
     
     func flipDealerCard(){
-        
         print("The dealer fliped a \(Suit.glyph(forHashValue: Deck.dealerHand[1].suit))\(Deck.dealerHand[1].value)\n")
         dealerTotal()
-        
     }
     
     func checkForBust(){
@@ -208,7 +208,7 @@ class PlayGame {
         }
         
         if dealerHandCount > 21 {
-            print("Bust\nYou win!")
+            print("Bust\n\nYou win!")
         }
         
         

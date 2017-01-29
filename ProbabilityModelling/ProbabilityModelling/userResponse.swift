@@ -19,8 +19,10 @@ func question() {
     // Repeat until a proper response is given
     repeat {
         
+        // Ask the question
         print("Would you like to hit or stand?\n")
         
+        // If the user gives a response
         if let input = readLine(strippingNewline: true) {
             responseString = input
             
@@ -34,7 +36,7 @@ func question() {
                 //print("Player Hit")
                 response = true
                 
-                // Id the player stands
+            // If the player stands
             } else if responseString == "stand" || responseString == "Stand" {
                 
                 Game.stand()
@@ -57,6 +59,7 @@ func question() {
             
             print("Would you like to play again?\n")
             
+            // If a response is given
             if let input = readLine(strippingNewline: true) {
                 responseString = input
                 
