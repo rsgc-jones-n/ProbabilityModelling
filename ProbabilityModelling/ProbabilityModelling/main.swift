@@ -14,16 +14,18 @@ var Response: UserResponse = UserResponse()
 var Deck: cardDeck = cardDeck()
 var deck : [Card] = []
 
-// Initalize a deck of cards
-for suit in 0...3 {
-    for value in 2...14 {
-        var card = Card(value: value, suit: suit)
-        deck.append(card)
-    }
-}
-
 // Display the welcome message
 print("Welcome to Command Line Blackjack!\n")
+
+func initializeDeck() {
+    // Initalize a deck of cards
+    for suit in 0...3 {
+        for value in 2...14 {
+            var card = Card(value: value, suit: suit)
+            deck.append(card)
+        }
+    }
+}
 
 // List functions to play the game
 func play(){
@@ -33,9 +35,15 @@ Game.statePlayerTotal()
 Game.stateDealersFace()
 Response.question()
 Game.checkWinner()
-Deck.resetDeck()
+Deck.removeCards()
+Game.resetHands()
+initializeDeck()
 Response.playAgain()
+
 }
+
+// Create the deck
+initializeDeck()
 
 // Play the game
 play()

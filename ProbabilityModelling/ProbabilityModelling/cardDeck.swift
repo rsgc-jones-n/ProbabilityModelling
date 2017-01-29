@@ -10,14 +10,16 @@ import Foundation
 
 class cardDeck {
     
+    var resetPosition = 1
+    
     // Declare the two hands
     var playerHand : [Card] = []
     var dealerHand : [Card] = []
     
-    // Reset the deck
-    func resetDeck(){
+    func removeCards(){
         
-        while deck >
-        
+        deck.removeAll()
+    
     }
+    
 }

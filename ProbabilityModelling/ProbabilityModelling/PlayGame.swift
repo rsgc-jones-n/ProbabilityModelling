@@ -78,7 +78,7 @@ class PlayGame {
         // Itterate over the dealers hand
         for (index, card) in Deck.dealerHand.enumerated() {
             
-            // If the card is a J, Q or K  only add 10 to count
+            // If the card is a J, Q or K, only add 10 to count
             if card.value > 10 {
                 
                 dealerHandCount += 10
@@ -93,7 +93,7 @@ class PlayGame {
         if dealerHandCount < playerHandCount {
             dealToDealer()
         } else if dealerHandCount == playerHandCount {
-            print("Push")
+            print("Push\n")
         } else if dealerHandCount > playerHandCount && dealerHandCount == 21 {
             checkForBlackjack()
         }
@@ -208,13 +208,22 @@ class PlayGame {
         }
         
         if dealerHandCount > 21 {
-            print("Bust\n\nYou win!")
+            print("Bust\n\nYou win!\n")
         }
         
+        
+    }
+    
+    func resetHands() {
+        
+        Deck.playerHand.removeAll()
+        
+        Deck.dealerHand.removeAll()
         
     }
     
     func endGame(){
         print("Thanks for playing!")
     }
+
 }
